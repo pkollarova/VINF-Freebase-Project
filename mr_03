@@ -1,0 +1,6 @@
+<http://rdf.freebase.com/ns/m.01067c8f>	an_award
+<http://rdf.freebase.com/ns/m.01067c8f>	is_award_of	<http://rdf.freebase.com/ns/g.124xw1pq6>
+<http://rdf.freebase.com/ns/m.01067d13>	an_award
+<http://rdf.freebase.com/ns/m.01067d13>	is_award_of	<http://rdf.freebase.com/ns/g.121qg1sp>
+<http://rdf.freebase.com/ns/m.0ztntp0>	an_award
+<http://rdf.freebase.com/ns/m.0ztntp0>	has_name	"SUPER AWARD NAME"
