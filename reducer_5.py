@@ -18,10 +18,21 @@ for read_line in input_stream:
 #for read_line in sys.stdin:
     read_line = read_line.strip()
     splitted_line = read_line.split("\t")
+
     left_col = splitted_line[0]
     center_col = splitted_line[1]
     #right_col = splitted_line[2]
-    
+
+    if "None" in left_col:
+        continue
+
+    #if str(current_id) == "None":
+    #    if len(data_list) > 0:
+    #        print(str(current_id) + "\thas_track\t" + " ~~~ ".join(data_list))
+    #    current_id = left_col
+    #    data_list = list()
+    #    data_list.append(splitted_line[2])
+    #    continue
 
     if current_id == None:
         current_id = left_col

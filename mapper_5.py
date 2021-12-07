@@ -45,6 +45,8 @@ current_col = None
 
 for read_line in input_stream:
 #while read_line:
+    if len(read_line.strip()) == 0 :
+        continue
     original_line = read_line.strip()
     splitted_original_line = original_line.split("\t")
     read_line = re.sub(FB_NS_URL, '', read_line)
@@ -63,13 +65,13 @@ for read_line in input_stream:
 
 
     if ("a_track" in center_col):
-        if len(dic) > 0 and current_id != None:
+        if len(dic) > 0 and current_id != None and "None" not in str(dic[3]):
            #print(str(dic).encode("utf-8", "ignore").decode("ascii", "ignore"))
             #temp = str(dic[3])[2:]
             #temp_len = len(temp)
             #temp = temp[:temp_len - 2]
             temp = dic[3]
-            print(str(temp) + "\thas_track\t" + "{" + str(dic[0]) + " --- " + str(dic[1]).encode("utf-8", "ignore").decode("ascii", "ignore") + " --- " + str(dic[2]).encode("utf-8", "ignore").decode("ascii", "ignore") + "}")
+            print(str(temp) + "\thas_track\t" + "{" + str(dic[1]).encode("utf-8", "ignore").decode("ascii", "ignore") + " --- " + str(dic[2]).encode("utf-8", "ignore").decode("ascii", "ignore") + "}")
         current_id = left_col_original
         dic = []
         dic.append(None)
@@ -92,12 +94,21 @@ for read_line in input_stream:
         if "is_track_of" in center_col:
             dic[3] = right_col_original
     else:
+        if "a_track" not in center_col:
+            current_id = None
+            dic = []
+            dic.append(None)
+            dic.append(None)
+            dic.append(None)
+            dic.append(None)
+            continue
         # print(str(dic).encode("utf-8", "ignore").decode("ascii", "ignore"))
         #temp = str(dic[3])[2:]
         #temp_len = len(temp)
         #temp = temp[:temp_len - 2]
         temp = dic[3]
-        print(str(temp) + "\thas_track\t" + "{" + str(dic[0]) + " --- " + str(dic[1]).encode("utf-8", "ignore").decode("ascii", "ignore") + " --- " + str(dic[2]).encode("utf-8", "ignore").decode("ascii", "ignore") + "}")
+        if len(dic) > 0 and "None" not in str(dic[3]):
+            print(str(temp) + "\thas_track\t" + "{" + str(dic[1]).encode("utf-8", "ignore").decode("ascii", "ignore") + " --- " + str(dic[2]).encode("utf-8", "ignore").decode("ascii", "ignore") + "}")
         #print(str(temp) + "\thas_track\t" + "{" + str(dic[0]) + " --- " + str(dic[1]) + " --- " + str(dic[2]) + "}")
         current_id = left_col_original
         dic = []

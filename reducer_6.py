@@ -21,7 +21,6 @@ for read_line in input_stream:
     left_col = splitted_line[0]
     center_col = splitted_line[1]
     right_col = splitted_line[2]
-    
 
     if current_id == None:
         current_id = left_col

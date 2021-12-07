@@ -24,15 +24,15 @@ for read_line in input_stream:
     read_line = re.sub(FB_NS_URL, '', read_line)
     read_line = re.sub(FB_URL, '', read_line)
     read_line = re.sub(W3_URL, '', read_line)
-    read_line = re.sub("http:\/\/www.w3.org\/[0-9]*\/XMLSchema#date>", "", read_line)
     read_line = read_line.replace("<", "")
     read_line = read_line.replace(">", "")
     read_line = read_line.replace("/", "")
     read_line = read_line.replace("^", "")
+    read_line = re.sub('http:www.w3.org[0-9]*XMLSchema#[date|gYear]*>', "", read_line)
                       
     splitted_line = read_line.split("\t")
-    artist_id = splitted_line[0]
-    dataset = splitted_line[2]
+    #artist_id = splitted_line[0]
+    dataset = splitted_line[0]
 
     splitted_dataset =  dataset.split(" ***** ")
     personal_data = splitted_dataset[0].replace("{", "").replace("}", "")
@@ -54,6 +54,8 @@ for read_line in input_stream:
             personal_data_desc = personal_data_splitted[i]
         if i == 2:
             personal_data_born = personal_data_splitted[i]
-    print(artist_id + " ***** " + personal_data_names + " ***** " + personal_data_desc + " ***** " + personal_data_born + " ***** " + track_data + " ***** " + award_data)
-    print("\n\n")
+    if str(personal_data_names) == "None":
+        continue
+    print(personal_data_names + " ***** " + personal_data_desc + " ***** " + personal_data_born + " ***** " + track_data + " ***** " + award_data)
+
 

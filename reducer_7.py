@@ -28,7 +28,27 @@ for read_line in input_stream:
     left_col = splitted_line[0]
     center_col = splitted_line[1]
     right_col = splitted_line[2]
-    
+
+    if str(current_id) == "None":
+        if len(dic) > 0:
+            finala = str(dic[0]) + " ***** " + str(dic[1]) + " ***** " + str(dic[2])
+            #print(str(current_id) + "\thas_dataset\t" + str(dic))
+            print(finala)
+        current_id = left_col
+        dic = {}
+        dic[0] = None
+        dic[1] = None
+        dic[2] = None
+        if "has_data" in center_col:
+            dic[0] = right_col
+            continue
+        elif "has_track" in center_col:
+            dic[1] = right_col
+            continue
+        elif "has_award" in center_col:
+            dic[2] = right_col
+            continue
+        continue
 
     if current_id == None:
         current_id = left_col
@@ -45,7 +65,7 @@ for read_line in input_stream:
             continue
     else:
         if len(dic) > 0:
-            finala = current_id + "\thas_dataset\t" + str(dic[0]) + " ***** " + str(dic[1]) + " ***** " + str(dic[2])
+            finala = str(dic[0]) + " ***** " + str(dic[1]) + " ***** " + str(dic[2])
             #print(str(current_id) + "\thas_dataset\t" + str(dic))
             print(finala)
         current_id = left_col
