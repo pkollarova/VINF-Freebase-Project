@@ -1,14 +1,14 @@
 # VINF-Freebase-Project
 
 
-####O projekte####
+### O projekte
 
 Našou úlohou bolo spracovať dáta z Freebase tak, aby sme vedeli vyhľadávať vzťah Artist + Track + Award. Sústredili sme sa čisto na hudobnú doménu. Motiváciou k výberu tohto zadania bol samozrejme pozitívny vzťah k hudbe.
 
 Nás vyhľadávač je možné využiť na čiastkové vyhľadávanie informácií na základe mien artistov, názvov trackov alebo názvov ocenení. Okrem informácií o menách a názvoch poskytne aj informáciu o artistovi, jeho narodení, dĺžke tracku a roku udelenia ocenenia. Ak sa nám nejaký údaj nepodarilo získať, štandardne sa zobrazí hodnota "None".
 
 
-####Postup pri vypracovávaní####
+### Postup pri vypracovávaní
 
 Na začiatku sme samozrejme pracovali lokálne na našom notebooku a celé spracovanie Freebase súboru, indexovanie a vyhľadávanie sa odohrávalo v 1 dlhom a jednoduchom Python skripte. V tejto fáze sme pracovali samozrejme iba s malými ukážkovými Freebase súbormi a všetky dáta sme si udržiavali iba v pamäti.
 
@@ -19,7 +19,7 @@ Nakoniec sme svoj zdrojový kód museli preklopiť do clustera. Táto časť ná
 Celému projektu sme sa venovali pravidelne, preto sme mali čas na prácu vždy pekne rozvrhnutý a nestalo sa, že by sme niečo na základe pripomienok z konzultácií nestíhali zapracovať.
 
 
-####Overenie výsledkov####
+### Overenie výsledkov
 
 Výsledky nášho vyhľadávania sme si na konkrétnych príkladoch overovali pomocou Freebase Easy a aj Googlenia informácií, ktoré nám boli vyhľadané.
 
@@ -38,12 +38,12 @@ V tomto prípade sme nechalli vyhľadávanie voľnejšie a vyhľadali sme inform
 Jednotlivé výsledky nášho vyhľadávania sme zároveň aj hodnotili podľa relevantnosti. Naše vyhľadávanie sme mali ohraničené nízkou bodovou hranicou a tým pádom boli všetky naše výsledky vyhľadávania pomerne relevantné. Samozrejme, pri všeobecných vyhľadávaniach (napríklad iba podľa krstného mena) sme stále dostali vysoký počet výsledkov. Pri konkrétnejších dopytoch sa nám výsledky samozrejme rapídne zúžili a mali sme len malé množstvo FalsePositive prípadov.
 
 
-####Inštalácia####
+### Inštalácia
 
 Inštalácia je veľmi jednoduchá, nevyžaduje inštaláciu žiadnych krkolomných Python knižníc ani nič podobného. Stačí rozbaliť všetky zdrojové súbory do nejakého priečinka. Je však potrebné dokázať spustiť Hadoop joby na clusteri, pretože Freebase dump, s ktorým pracujeme má 250GB.
 
 
-####Spustenie a použitie####
+### Spustenie a použitie
 
 Spracovanie súborov do podoby pre prácu s indexom je nasledovný:
 1.  skopírovať všetky súbory do Hadoop fs
@@ -76,6 +76,6 @@ Vyhľadávanie:
 Vyhľadávať je možné prostredníctvom fieldov "artist_name", "track_names" a "award_names". Okrem toho disponuje aj fieldami "artist_description", "artist_bday", "track_datas" a "award_datas" (cez tie sa však štandardne nevyhľadáva).
 
 
-####Záver####
+### Záver
 
 Myslíme si, že naše vypracovanie projektu celkom pekne spracováva Freebase dáta napriek rozdeleniu do viacerých jobov. S výsledkami vyhľadávania sme pomerne spokojní, i ked nás mrzí, že obsahuje niektoré "None" hodnoty, či už preto lebo sa v dátach nenachádzali alebo sme ich nejakou chybou nezaregistrovali a nepozbierali. Myslíme si ale, že je možné naše riešenie využiť na také rýchle a čiastkové vyhľadávanie. Ak by sa malo naše riešenie v budúcnosti využívať, bolo by potrebné v určitých intervaloch indexovať nové a nové dáta a upraviť indexer tak, aby pracoval otvorením a dopĺňaním dát do indexu, pretože momentálne pracuje vždy vytvorením úplne nových dát.
