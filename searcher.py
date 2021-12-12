@@ -14,28 +14,23 @@ from org.apache.lucene.store import SimpleFSDirectory
 from org.apache.lucene.queryparser.classic import QueryParser
 from org.apache.lucene.search import IndexSearcher
 
+# Get the query from arguments
 argParser = argparse.ArgumentParser()
-#argParser.add_argument('search_type', type=str)
 argParser.add_argument('searched_data', type=str)
 args = argParser.parse_args()
-#print(args.search_type)
-#print(args.searched_data)
 
 env = lucene.initVM(vmargs=['-Djava.awt.headless=true'])
 
+# Find index and setup some variables
 fsDir = SimpleFSDirectory(Paths.get('index'))
 ixAnalyzer = StandardAnalyzer()
 ixSearcher = IndexSearcher(DirectoryReader.open(fsDir))
 
-#search_area = "artist_name"
-#if args.search_type == "T":
-#    search_area = "track_names"
-#if args.search_type == "W":
-#    search_area = "award_datas"
-
+# Search that query
 ixParser = QueryParser("default_field", ixAnalyzer)
 query = ixParser.parse(args.searched_data)
 
+# Get the hits from searching
 hits = ixSearcher.search(query, 10).scoreDocs
 
 print("\n")
@@ -44,7 +39,9 @@ print("*** SEARCH RESULTS ***")
 print("**********************")
 print("\n")
 
+# Loop the hits
 for hit in hits:
+    # Get the found data and print it
     hitDoc = ixSearcher.doc(hit.doc)
     print("Artist Name(s)")
     print("\t" + hitDoc.get("artist_name"))
@@ -54,12 +51,13 @@ for hit in hits:
     print("\t" + hitDoc.get("artist_bday").replace("http:www.w3.org2001XMLSchema#date", "").replace("http:www.w3.org2001XMLSchema#gYear", ""))
     print("Artist Track(s) - Name + Length")
     separate_track_data = hitDoc.get("track_datas").split("*****")
+    # If there are any track data, print them out one by one
     if separate_track_data != None:
         for el in separate_track_data:
             print("\t" + el.replace("\t", " "))
     print("Artist Award(s) - Description + Year")
-    print(hitDoc.get("award_datas"))
     separate_award_data = hitDoc.get("award_datas").split("*****")
+    # If there are any award data, print them out one by one
     if separate_award_data != None:
         for el in separate_award_data:
             print("\t" + el.replace("http:www.w3.org2001XMLSchema#gYear", "").replace("\t", " "))
