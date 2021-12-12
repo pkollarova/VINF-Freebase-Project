@@ -10,6 +10,11 @@ import time
 if sys.version_info[0] >= 3:
     unicode = str
 
+'''
+This reducer is used to process sorted data from the fifth mapper.
+It does line by line and puts information about all the specific artists tracks together into one line.
+'''
+
 # Global variables initialization
 current_id = None
 data_list = list()

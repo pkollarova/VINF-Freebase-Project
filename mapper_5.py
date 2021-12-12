@@ -10,6 +10,11 @@ import time
 if sys.version_info[0] >= 3:
     unicode = str
 
+'''
+This mapper is used to process output from the second job and put all artists track datas together
+In the end, we get all artist track data in one row.
+'''
+
 # Global variables initialization
 FB_URL = 'http:\/\/rdf.freebase.com'
 FB_NS_URL = 'http:\/\/rdf.freebase.com\/ns'

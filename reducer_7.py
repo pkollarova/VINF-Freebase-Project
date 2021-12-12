@@ -10,6 +10,11 @@ import time
 if sys.version_info[0] >= 3:
     unicode = str
 
+'''
+This reducer is used to process sorted data from the seventh mapper.
+It does line by line and puts every information about the specific artist together into one line.
+'''
+
 # Global variables initialization
 current_id = None
 data_list = list()

@@ -10,6 +10,10 @@ import time
 if sys.version_info[0] >= 3:
     unicode = str
 
+'''
+This mapper is used just to print out all data from input, so then they can be sorted.
+This mapper is very trivial.
+'''
 
 input_stream = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 

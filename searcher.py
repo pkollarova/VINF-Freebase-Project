@@ -14,6 +14,11 @@ from org.apache.lucene.store import SimpleFSDirectory
 from org.apache.lucene.queryparser.classic import QueryParser
 from org.apache.lucene.search import IndexSearcher
 
+'''
+This code is used for index searches.
+At the input, we will receive a search query in the arguments, which we will search for and display its results.
+'''
+
 # Get the query from arguments
 argParser = argparse.ArgumentParser()
 argParser.add_argument('searched_data', type=str)

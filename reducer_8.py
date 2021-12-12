@@ -10,6 +10,11 @@ import time
 if sys.version_info[0] >= 3:
     unicode = str
 
+'''
+This reducer is used to process sorted data from the output of the seventh job.
+It does line by line and breaks every information so it can be easier indexed.
+'''
+
 # Global variables initialization
 current_id = None
 data_list = list()

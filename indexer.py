@@ -11,6 +11,12 @@ from org.apache.lucene.document import Document, Field, FieldType, TextField
 from org.apache.lucene.index import IndexOptions, IndexWriter, IndexWriterConfig, DirectoryReader
 from org.apache.lucene.store import SimpleFSDirectory
 
+'''
+This code is used to index the "final_jobs_output" file.
+It goes line by line, with each line containing a cluster of complete information about one entity, ie 1 line in the file = 1 line in the indexed document.
+This input file is read in a cycle, broken into pieces, and then this data is indexed.
+'''
+
 # Global variables initialization
 env = lucene.initVM(vmargs=['-Djava.awt.headless=true'])
 

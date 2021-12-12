@@ -10,6 +10,12 @@ import time
 if sys.version_info[0] >= 3:
     unicode = str
 
+'''
+This mapper is used to process a freebase file from which it obtains all information about the music artist.
+At the same time, it cleans the lines of the freebase file so that we can search better.
+We are looking for their specific IDs, descriptions, dates of birth and names or labels.
+'''
+
 # Global variables initialization
 FB_URL = 'http:\/\/rdf.freebase.com'
 FB_NS_URL = 'http:\/\/rdf.freebase.com\/ns'
